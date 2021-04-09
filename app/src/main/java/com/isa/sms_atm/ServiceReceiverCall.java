@@ -35,16 +35,8 @@ public class ServiceReceiverCall extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("app_info", "Llevando a cabo servicio");
-        // Recuperacion de valores de intent
-        /*
-        String tel = intent.getStringExtra("telefono");
-        String msj = intent.getStringExtra("mensaje");*/
-        /*SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", Context.MODE_PRIVATE);
-        mensaje = sharedPref.getString("msj", "En breve me comunico con ud.");
-        telefono = sharedPref.getString("tel", "NULL");*/
-        //Log.d("app_info", "tel :  " + telefono);
-        // Registro del broadcast en la actividad
-        BroadcastReceiver miReceptor = new ReceiverCall(/*telefono, mensaje*/);
+
+        BroadcastReceiver miReceptor = new ReceiverCall();
         IntentFilter intento = new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED);
         this.registerReceiver(miReceptor,intento);
 

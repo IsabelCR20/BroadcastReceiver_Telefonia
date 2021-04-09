@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         msj = sharedPref.getString("msj", "En breve me comunico con ud.");
         tel = sharedPref.getString("tel", "NULL");
 
-
-
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,10 +67,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         swActivo.setOnCheckedChangeListener(this);
 
-
-        // Aquí estaban las lineas de registro de briadcast
-
-
     }
 
 
@@ -81,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         if(isChecked) {
             Toast.makeText(getBaseContext(), "Activar servicio", Toast.LENGTH_SHORT).show();
             servicioCall = new Intent(getBaseContext(), receiverCall.getClass());
-            // servicioCall.putExtra("telefono", tel);
-            // servicioCall.putExtra("mensaje", msj);
             startService(servicioCall);
             Log.d("app_info", "Ya lo inicio");
         }

@@ -34,9 +34,6 @@ public class ReceiverCall extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences sp = context.getSharedPreferences(context.getPackageName()+"_preferences", Context.MODE_PRIVATE);
-
-
-
         this.telefono = sp.getString("tel", "NULL");
         this.mensaje = sp.getString("msj", "NULL");
         Log.d("app_info", "Numero de telefono: " + telefono + "     Mensaje: "+ mensaje);
@@ -49,10 +46,13 @@ public class ReceiverCall extends BroadcastReceiver {
                 //Log.d("app_info", "Numero de telefono:" + intent.getExtras().getString(TelephonyManager.EXTRA_INCOMING_NUMBER));
                 if(numTel.equals(telefono)){
                     Log.d("app_info", "Hay que responder!!!  " + mensaje);
+                    // Respondiendo con mensaje
+                    EnviarMensaje();
+                    //
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "CANAL")
                             .setSmallIcon(R.drawable.fondo)
                             .setContentTitle("SMS Automático")
-                            .setContentText("Hola! vamos a enviar un mensaje a " + telefono)
+                            .setContentText("Hola! Se ha enviado un mensaje a " + telefono)
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
@@ -69,6 +69,6 @@ public class ReceiverCall extends BroadcastReceiver {
 
     private void EnviarMensaje(){
         SmsManager smsM = SmsManager.getDefault();
-        smsM.sendTextMessage(numTel,null, msj, null, null);
+        smsM.sendTextMessage(telefono,null, mensaje, null, null);
     }
 }
