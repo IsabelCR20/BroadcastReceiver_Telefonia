@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SMS_ATM</string>
+    <string name="app_name">SMS_Automático</string>
+    <string name="tel"></string>
+    <string name="msj"></string>
 </resources>
