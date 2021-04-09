@@ -25,6 +25,7 @@
 
             </intent-filter>
         </receiver>
+        <service android:name=".ServiceReceiverCall"/>
     </application>
 
 </manifest>
